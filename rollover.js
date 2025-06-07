@@ -25,23 +25,23 @@ function runprogram(prg) {
         cells[currcellnum] = 0;
       }
     } else if (char === "p") {
-      notices+=cells[currcellnum]+ "<br>";
+      notices+=cells[currcellnum];
       console.log(cells[currcellnum]);
     } else if (char === "u") {
-      notices+=String.fromCodePoint(cells[currcellnum]) + "<br>";
+      notices+=String.fromCodePoint(cells[currcellnum]);
       console.log(String.fromCodePoint(cells[currcellnum]));
     } else if (char === "a") {
       if (cells[currcellnum] < 128) {
-        notices+=String.fromCharCode(cells[currcellnum]) + "<br>";
+        notices+=String.fromCharCode(cells[currcellnum]);
         console.log(String.fromCharCode(cells[currcellnum]));
       } else {
-        notices+=`Rollover: ASCII Print Error; value "${cells[currcellnum]}" is not ASCII.<br>`
+        notices+=`<br>Rollover: ASCII Print Error; value "${cells[currcellnum]}" is not ASCII.<br>`
         console.error(
           `Rollover: ASCII Print Error; value "${cells[currcellnum]}" is not ASCII.`
         );
       }
     } else {
-      notices+=`Rollover: Unknown command "${char}" in loop or program.<br>`
+      notices+=`<br>Rollover: Unknown command "${char}" in loop or program.<br>`
       console.error(`Rollover: Unknown command "${char}" in loop or program.`);
     }
   }
@@ -64,7 +64,7 @@ function runprogram(prg) {
         }
 
         if (bracketDepth !== 0) {
-          notices+=`Rollover: Mismatched brackets starting at character ${i}.<br>`
+          notices+=`<br>Rollover: Mismatched brackets starting at character ${i}.<br>`
           console.error(`Rollover: Mismatched brackets starting at character ${i}.`);
           return;
         }
@@ -80,7 +80,7 @@ function runprogram(prg) {
         }
 
       } else {
-        notices+=`Rollover: Loop Start Error at character ${i}; Expected "[", found "${prg[i + 1]}".<br>`
+        notices+=`<br>Rollover: Loop Start Error at character ${i}; Expected "[", found "${prg[i + 1]}".<br>`
         console.error(
           `Rollover: Loop Start Error at character ${i}; Expected "[", found "${prg[i + 1]}".`
         );
@@ -99,7 +99,7 @@ function runprogram(prg) {
       execChar(currChar);
     }
   }
-notices+=`Final state: ${JSON.stringify(cells)}`
+notices+=`<br>Final state: ${JSON.stringify(cells)}`
   console.log("Final state:", JSON.stringify(cells));
 }
 function runfromweb() {

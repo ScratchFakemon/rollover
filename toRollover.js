@@ -7,5 +7,6 @@ function toRollover(str) {
   }
   return result;
 }
-
-console.log(toRollover("According to all known laws of aviation, there is no way a bee should be able to fly."));
+let rolloverified = toRollover(prompt("What string do you want to convert?"))
+alert(rolloverified)
+console.log(rolloverified);

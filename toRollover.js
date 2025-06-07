@@ -7,6 +7,6 @@ function toRollover(str) {
   }
   return result;
 }
-let rolloverified = toRollover(prompt("What string do you want to convert?"))
-alert(rolloverified)
+let rolloverified = toRollover(prompt("What string do you want to convert?"));
+alert(rolloverified);
 console.log(rolloverified);

@@ -1,79 +1,94 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Rollover Esolang</title>
-        <style>
-            body, label {
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-                color: white;
-                background-color: #864848;
-            }
-            input, button, select {
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-                padding: 10px;
-                border-radius: 100px;
-                border: none;
-                background-color: #e68b8b;
-                color: white;
-                margin-top: 5px;
-                
-                
-            }
-            a {
-                color: #e68b8b;
-                font-weight: bold;
-                text-decoration: none;
-            }
-            button, a, select {
-                transition: all 1s ease-in-out
-            }
-            button:hover, select:hover {
-                background-color: #eda8a8;
-            }
-            a:hover {
-                color: #eda8a8;
-                text-decoration: underline;
-            }
-            
-           
-        </style>
-        <link rel="icon" type="image/x-icon" href="favicon.svg">
-    </head>
-    <body>
-        <h1>Rollover</h1>
-        <br>
-        <h3>What is Rollover?</h3>
-        Rollover is an esolang created by <a href="https://scratchfakemon.github.io">Scratch_Fakemon</a>. It uses an array of cells, of which there can only be 256 (0-255). A cell's value works the same way, starting at 0 and having a maximum of 255. <br>Since Rollover doesn't have any decrement commands, the only way to make the current cell or its value go down is to have it <i>roll over</i> (get it?) when it exceeds the maximum value.
-        <br>
-        <h3>Rollover's commands</h3>
-        Rollover has 6 commands in total:
-        <ul>
-            <li>n - moves to the next cell</li>
-            <li>i - increments the current cell's value</li>
-            <li>c[] - loops the code inside the brackets until the value of the cell equals the cell's index</li>
-            <li>p - prints the current cell's value as a number</li>
-            <li>a - prints the current cell's value as an ASCII character</li>
-            <li>u - prints the current cell's value as a UTF-8 character</li>
-        </ul>
-        <br>
-        <h3>Try it out!</h3>
-        <div id=tryitout>
-        <label for="samples">Use a sample</label>
-        <select id="samples" onchange="updateinput()">
-<option value=0>None</option>
-<option value=1>Hello world!</option>
-<option value=2>:D</option>
-<option value=3>Isn't Rollover just so epic?</option>
-<option value=4>Aviation</option>
-        </select>
-        <br>
-            <input placeholder="Put your Rollover code here..." id="rolloverinput">
-            <button onclick="runfromweb()">Run</button>
-            <p id="notices"></p>
-            </div>
-            <hr>
-            Rollover also has a <a href="https://esolangs.org/wiki/Rollover">page on esolangs.org</a>!
-        
-        <script src="rollover.js"></script>
-    </body>
+  <head>
+    <title>Rollover Esolang</title>
+    <style>
+      body,
+      label {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        color: white;
+        background-color: #864848;
+      }
+      input,
+      button,
+      select {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        padding: 10px;
+        border-radius: 100px;
+        border: none;
+        background-color: #e68b8b;
+        color: white;
+        margin-top: 5px;
+      }
+      a {
+        color: #e68b8b;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      button,
+      a,
+      select {
+        transition: all 1s ease-in-out;
+      }
+      button:hover,
+      select:hover {
+        background-color: #eda8a8;
+      }
+      a:hover {
+        color: #eda8a8;
+        text-decoration: underline;
+      }
+    </style>
+    <link rel="icon" type="image/x-icon" href="favicon.svg" />
+  </head>
+  <body>
+    <h1>Rollover</h1>
+    <br />
+    <h3>What is Rollover?</h3>
+    Rollover is an esolang created by
+    <a href="https://scratchfakemon.github.io">Scratch_Fakemon</a>. It uses an
+    array of cells, of which there can only be 256 (0-255). A cell's value works
+    the same way, starting at 0 and having a maximum of 255. <br />Since
+    Rollover doesn't have any decrement commands, the only way to make the
+    current cell or its value go down is to have it <i>roll over</i> (get it?)
+    when it exceeds the maximum value.
+    <br />
+    <h3>Rollover's commands</h3>
+    Rollover has 6 commands in total:
+    <ul>
+      <li>n - moves to the next cell</li>
+      <li>i - increments the current cell's value</li>
+      <li>
+        c[] - loops the code inside the brackets until the value of the cell
+        equals the cell's index
+      </li>
+      <li>p - prints the current cell's value as a number</li>
+      <li>a - prints the current cell's value as an ASCII character</li>
+      <li>u - prints the current cell's value as a UTF-8 character</li>
+    </ul>
+    <br />
+    <h3>Try it out!</h3>
+    <div id="tryitout">
+      <label for="samples">Use a sample</label>
+      <select id="samples" onchange="updateinput()">
+        <option value="0">None</option>
+        <option value="1">Hello world!</option>
+        <option value="2">Winky Guy</option>
+        <option value="3">Isn't Rollover just so epic?</option>
+        <option value="4">Aviation</option>
+        <option value="5">Odd or Even (by Ponydork)</option>
+      </select>
+      <br />
+      <input placeholder="Put your Rollover code here..." id="rolloverinput" />
+      <button onclick="runfromweb()">Run</button>
+      <p id="notices"></p>
+    </div>
+    <hr />
+    Rollover also has a
+    <a href="https://esolangs.org/wiki/Rollover">page on esolangs.org</a>!
+
+    <script src="rollover.js"></script>
+  </body>
 </html>

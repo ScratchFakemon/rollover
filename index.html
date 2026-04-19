@@ -10,7 +10,7 @@
         color: white;
         background-color: #864848;
       }
-      input,
+      textarea,
       button,
       select {
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
@@ -21,6 +21,11 @@
         background-color: #e68b8b;
         color: white;
         margin-top: 5px;
+      }
+      textarea {
+        border-radius: 25px;
+        width: 510px;
+        height: 290px;
       }
       a {
         color: #e68b8b;
@@ -67,6 +72,7 @@
       <li>p - prints the current cell's value as a number</li>
       <li>a - prints the current cell's value as an ASCII character</li>
       <li>u - prints the current cell's value as a UTF-8 character</li>
+      <li>g - gets a numerical input from the user and places it in the current cell</li>
     </ul>
     <br />
     <h3>Try it out!</h3>
@@ -78,11 +84,12 @@
         <option value="2">Winky Guy</option>
         <option value="3">Isn't Rollover just so epic?</option>
         <option value="4">Aviation</option>
-        <option value="5">Odd or Even (the number of i's before the first n represent the input number) - by Ponydork</option>
+        <option value="5">Odd or Even - by Ponydork, modified by Scratch_Fakemon</option>
         <option value="6">Beer on the Wall - by Ponydork</option>
+        <option value="7">ASCII Printer</option>
       </select>
       <br />
-      <input placeholder="Put your Rollover code here..." id="rolloverinput" />
+      <textarea placeholder="Put your Rollover code here..." id="rolloverinput"></textarea>
       <button onclick="runfromweb()">Run</button>
       <p id="notices"></p>
     </div>

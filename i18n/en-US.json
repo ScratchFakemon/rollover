@@ -49,7 +49,8 @@
     "Final state:": "Final state:",
 
     "Configuration": "Configuration",
-    "Configuration data will not be saved.": "<i>Configuration data will <b>not</b> be saved.</i>",
+    "Configuration data will not be saved.": "<i>Configuration data will <b>not</b> be saved.</i> ",
+    "Options marked as dangerous should be used at your own risk!": "<i>Options marked as dangerous should be used <b>at your own risk!</b></i>",
 
     "Other": "Other",
     "Select language": "Select language",

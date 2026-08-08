@@ -89,7 +89,7 @@ window.Rollover = class {
           return await prompt(`Please input a number between 0 and ${this.maxValue - 1}.`)
         })().then(value => {
           let input = parseInt(value);
-          if (Number.isNaN(input)) return;
+          if (Number.isNaN(Number(value))) return;
           if (input < 0) input = 0;
           if (input >= this.maxValue) input = this.maxValue - 1;
           this.cells[this.pointer] = input;

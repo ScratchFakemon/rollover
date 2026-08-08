@@ -25,8 +25,12 @@ select {
 
 textarea {
   width: 40%;
-  height: 40%;
+  height: 60%;
   resize: none;
+}
+
+#tryItOut {
+  height: 60%;
 }
 
 #runRollover {
@@ -55,10 +59,6 @@ select:hover {
 a:hover {
   color: #eda8a8;
   text-decoration: underline;
-}
-
-#tryItOut {
-  height: 40%;
 }
 
 input {

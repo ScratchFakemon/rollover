@@ -145,7 +145,7 @@ window.onload = async () => {
       `Sample name (${oby.length}+${mby.length})`
     );
 
-    option.setAttribute("data-i18n-fmt", JSON.stringify([
+    option.setAttribute("data-i18n-format", JSON.stringify([
       sample.name, oby[0], oby[1], oby[2], mby[0], mby[1], mby[2]
     ]));
 
@@ -226,7 +226,7 @@ window.onload = async () => {
   function updateText() {
     document.querySelectorAll("[data-i18n]").forEach(element => {
       let translation = Translation.translate(element.getAttribute("data-i18n"));
-      let format = element.getAttribute("data-i18n-fmt") ?? "[]";
+      let format = element.getAttribute("data-i18n-format") ?? "[]";
 
       try {
         format = JSON.parse(format);

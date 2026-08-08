@@ -14,6 +14,7 @@ window.onload = async () => {
   let languageSelector = document.getElementById("languageSelector");
   let stringToRolloverInput = document.getElementById("stringToRollover");
   let stringToRolloverResult = document.getElementById("stringToRolloverResult");
+  let toggleOutputButton = document.getElementById("toggleOutput");
 
   const yesNo = value => {
     switch (value) {
@@ -174,8 +175,10 @@ window.onload = async () => {
       if (parsable(input.value, option.type)) {
         Interpreter.configuration[sp[0]][sp[1]] = parseInput(input.value, option.type);
         input.removeAttribute("invalid");
+        input.removeAttribute("title");
       } else {
         input.setAttribute("invalid", "");
+        input.setAttribute("title", Translation.translate("Invalid input!"));
       }
     }
 
@@ -234,7 +237,7 @@ window.onload = async () => {
         format = [];
       }
 
-      if (format.length) translation = formatText(translation, ...format);
+      if (format.length > 0) translation = formatText(translation, ...format);
 
       switch (element.tagName) {
         case "TEXTAREA":
@@ -267,6 +270,19 @@ window.onload = async () => {
     Translation.changeLocale(languageSelector.value);
   }
 
+  window.toggleOutput = function () {
+    let isHidden = notices.hasAttribute("hidden");
+
+    if (isHidden)
+      notices.removeAttribute("hidden");
+    else
+      notices.setAttribute("hidden", "");
+
+    isHidden = !isHidden;
+
+    toggleOutputButton.innerText = Translation.translate(isHidden ? "Show Output" : "Hide Output");
+  }
+
   window.updateInput = function () {
     inputArea.innerText = window.Samples[Number(samples.value)].content;
   }
@@ -277,7 +293,11 @@ window.onload = async () => {
 
     let finalState = Translation.translate("Final state:");
 
-    notices.innerHTML = `${Interpreter.output.join("")}<br/><span>${finalState} ${JSON.stringify(Interpreter.cells)}</span>`;
+    notices.innerHTML =
+      `${Interpreter.output.join("").replaceAll("\n", "<br/>")}<br/><br/>` +
+      `<span>${finalState} ${JSON.stringify(Interpreter.cells)}</span>`;
+
+    toggleOutputButton.removeAttribute("hidden");
   }
 
   window.stringToRollover = function () {

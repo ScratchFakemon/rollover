@@ -73,7 +73,7 @@ window.Rollover = class {
       case this._char("p"):
         this.output.push(this.cells[this.pointer].toString());
         break;
-      case this._char("p"):
+      case this._char("u"):
         this.output.push(String.fromCodePoint(this.cells[this.pointer]));
         break;
       case this._char("a"):
@@ -81,15 +81,17 @@ window.Rollover = class {
           this.output.push(String.fromCharCode(this.cells[this.pointer]));
           break;
         }
-        this.output.push(`<br/>Rollover: ASCII Print Error; value "${this.cells[this.pointer]}" is not ASCII.<br/>`);
+        this.output.push(`\nRollover: ASCII Print Error; value "${this.cells[this.pointer]}" is not ASCII.\n`);
         console.error(`Rollover: ASCII Print Error; value "${this.cells[this.pointer]}" is not ASCII.`);
         break;
-      case _char("g"):
+      case this._char("g"):
         await (async () => {
           return await prompt(`Please input a number between 0 and ${this.maxValue - 1}.`)
         })().then(value => {
-          let input = parseInt(value);
-          if (Number.isNaN(Number(value))) return;
+          let input = Number(value);
+          if (Number.isNaN(input)) return;
+          if (!Number.isInteger(input)) return;
+
           if (input < 0) input = 0;
           if (input >= this.maxValue) input = this.maxValue - 1;
           this.cells[this.pointer] = input;
@@ -98,7 +100,7 @@ window.Rollover = class {
       default:
         if (this._cfg("commands.ignoreUnknown")) break;
 
-        this.output.push(`<br/>Rollover: Unknown command "${char}" in loop or program.<br/>`);
+        this.output.push(`\nRollover: Unknown command "${char}" in loop or program.\n`);
         console.error(`Rollover: Unknown command "${char}" in loop or program.`);
         break;
     }
@@ -125,7 +127,7 @@ window.Rollover = class {
         }
 
         if (bracketDepth !== 0) {
-          this.output.push(`<br/>Rollover: Mismatched brackets in nested loop.<br/>`);
+          this.output.push(`\nRollover: Mismatched brackets in nested loop.\n`);
           console.error(`Rollover: Mismatched brackets in nested loop.`);
           return;
         }
@@ -163,7 +165,7 @@ window.Rollover = class {
           }
 
           if (bracketDepth !== 0) {
-            this.output.push(`<br/>Rollover: Mismatched brackets starting at character ${i}.<br/>`);
+            this.output.push(`\nRollover: Mismatched brackets starting at character ${i}.\n`);
             console.error(
               `Rollover: Mismatched brackets starting at character ${i}.`,
             );
@@ -178,14 +180,14 @@ window.Rollover = class {
             await this._parseAndRunLoop(loopBody, iterations);
           }
         } else {
-          this.output.push(`<br/>Rollover: Loop Start Error at character ${i}; Expected "${this._char("[")}" but found "${program.charAt(i + 1)}".<br/>`);
+          this.output.push(`\nRollover: Loop Start Error at character ${i}; Expected "${this._char("[")}" but found "${program.charAt(i + 1)}".\n`);
           console.error(
             `Rollover: Loop Start Error at character ${i}; Expected "${this._char("[")}" but found "${program.charAt(i + 1)}".`,
           );
         }
       } else if (currChar === this._char("[")) {
         if (program.charAt(i - 1) !== this._char("c")) {
-          this.output.push(`<br/>Rollover: Loop Reference Error at character ${i}; "${this._char("[")}"" without "${this._char("c")}" before it.<br/>`);
+          this.output.push(`\nRollover: Loop Reference Error at character ${i}; "${this._char("[")}"" without "${this._char("c")}" before it.\n`);
           console.error(
             `Rollover: Loop Reference Error at character ${i}; "${this._char("[")} without ""${this._char("c")}" before it.`,
           );

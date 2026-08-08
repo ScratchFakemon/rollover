@@ -48,14 +48,15 @@
             <textarea data-i18n="Put your Rollover code here..." id="inputArea"></textarea>
             <br/>
 
-            <button id="runRollover" data-i18n="Run" onclick="runFromInput()"></button>
+            <button id="runRollover" data-i18n="Run" onclick="runFromInput()"></button><br/>
+            <button id="toggleOutput" data-i18n="Hide Output" onclick="toggleOutput()" hidden></button>
             <p id="notices"></p>
         </div>
 
         <h3 data-i18n="Configuration"></h3>
 
-        <small data-i18n="Configuration data will not be saved."></small>
-        <small data-i18n="Options marked as dangerous should be used at your own risk!"></small>
+        <i data-i18n="Configuration data will not be saved."></i>
+        <i><b data-i18n="Options marked as dangerous should be used at your own risk!"></b></i>
         <br/>
         <br/>
 
@@ -79,14 +80,19 @@
 
         <hr />
 
-        <div id="footer">
+        <div class="footer">
             <span data-i18n="Rollover also has a page on esolangs.org!"></span>
             <br />
 
-            <small data-i18n="Rollover originally by Scratch_Fakemon"></small>
-            <br />
+            <small><i>
+                <span data-i18n="Rollover was originally created by Scratch_Fakemon."></span>
+                <span data-i18n="Modified by Pigeon."></span>
+                <br />
 
-            <small data-i18n="Modified by Pigeon"></small>
+                <span data-i18n="Rollover is under the GNU GPLv3."></span>
+            </i></small>
+
+            <br />
         </div>
 
         <script src="script.js"></script>

@@ -1,14 +1,29 @@
 body, html {
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+
+  --theme-dark: #864848;
+  --theme-light: #e68b8b;
+  --theme-lighter: #eda8a8;
+  --theme-white: #ffffff;
+  --theme-black: #000000;
+
+  /*
+  --theme-dark: #001194;
+  --theme-light: #0036c6;
+  --theme-lighter: #0064e8;
+  --theme-white: #ffffff;
+  --theme-black: #000000;
+  */
 }
 
 body,
 label {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
     sans-serif;
-  color: white;
-  background-color: #864848;
+  color: var(--theme-white);
+  background-color: var(--theme-dark);
 }
 
 textarea,
@@ -19,28 +34,32 @@ select {
   padding: 0.5%;
   margin: 0.25%;
   border: none;
-  background-color: #e68b8b;
-  color: white;
+  color: var(--theme-white);
+  background-color: var(--theme-light);
 }
 
-textarea {
+#inputArea {
   width: 40%;
-  height: 60%;
+  height: 30vh;
   resize: none;
 }
 
-#tryItOut {
-  height: 60%;
-}
-
-#runRollover {
+#runRollover, #toggleOutput {
   width: 41%;
   text-align: center;
   padding: 0.5%;
 }
 
+#notices {
+  word-wrap: break-word;
+}
+
+#notices[hidden] {
+  display: none;
+}
+
 a {
-  color: #e68b8b;
+  color: var(--theme-light);
   font-weight: bold;
   text-decoration: none;
 }
@@ -53,16 +72,19 @@ select {
 
 button:hover,
 select:hover {
-  background-color: #eda8a8;
+  background-color: var(--theme-lighter);
 }
 
 a:hover {
-  color: #eda8a8;
+  color: var(--theme-lighter);
   text-decoration: underline;
 }
 
 input {
-  padding: 0.5%
+  padding: 0.5%;
+  color: var(--theme-black);
+  background-color: var(--theme-white);
+  border: none;
 }
 
 #configurationOptions input {
@@ -71,17 +93,23 @@ input {
   resize: horizontal;
 }
 
-input[invalid] {
-  border: red 1% solid;
-}
-
-#footer {
-  display: inline-block;
-  margin-bottom: 1%;
-}
-
 #stringToRolloverResult {
   display: inline-block;
   width: 99%;
   word-wrap: break-word;
+}
+
+input[invalid] {
+  border-color: var(--theme-lighter);
+  border-width: 4%;
+  border-style: solid;
+}
+
+hr {
+  background: var(--theme-white);
+}
+
+.footer {
+  display: inline-block;
+  margin-bottom: 1%;
 }

@@ -85,6 +85,9 @@ window.Rollover = class {
         console.error(`Rollover: ASCII Print Error; value "${this.cells[this.pointer]}" is not ASCII.`);
         break;
       case this._char("g"):
+        // If you're seeing this, please don't try to make this code "normal".
+        // I know you want to get rid of the weird closure function shenanigans,
+        // but I already tried. It doesn't work, because JavaScript is stupid.
         await (async () => {
           return await prompt(`Please input a number between 0 and ${this.maxValue - 1}.`)
         })().then(value => {

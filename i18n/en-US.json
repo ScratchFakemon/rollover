@@ -31,11 +31,26 @@
 
     "Try it out!": "Try it out!",
     "Use a sample": "Use a sample",
+    "Sample name (0+0)": "%1",
+    "Sample name (1+0)": "%1 - by %2",
+    "Sample name (2+0)": "%1 - by %2 and %3",
+    "Sample name (3+0)": "%1 - by %2, %3, and %4",
+    "Sample name (1+1)": "%1 - by %2, modified by %5",
+    "Sample name (2+1)": "%1 - by %2 and %3, modified by %5",
+    "Sample name (3+1)": "%1 - by %2, %3 and %4, modified by %5",
+    "Sample name (1+2)": "%1 - by %2, modified by %5 and %6",
+    "Sample name (2+2)": "%1 - by %2 and %3, modified by %5 and %6",
+    "Sample name (3+2)": "%1 - by %2, %3, and %4, modified by %5 and %6",
+    "Sample name (1+3)": "%1 - by %2, modified by %5, %6, and %7",
+    "Sample name (2+3)": "%1 - by %2 and %3, modified by %5, %6, and %7",
+    "Sample name (3+3)": "%1 - by %2, %3, and %4, modified by %5, %6, and %7",
     "Put your Rollover code here...": "Put your Rollover code here...",
     "Run": "Run",
     "Final state:": "Final state:",
 
     "Configuration": "Configuration",
+    "Configuration data will not be saved.": "<i>Configuration data will <b>not</b> be saved.</i>",
+
     "Other": "Other",
     "Select language": "Select language",
     "Convert text to Rollover": "Convert text to Rollover",
@@ -46,6 +61,6 @@
     "Modified by Pigeon": "<i>Modified by <a href=\"https://pid-j.github.io\">Pigeon</a></i>"
   },
   "configuration": {
-    "(DANGEROUS)": " <b style=\"color: #ff0000\">(DANGEROUS)<b>"
+    "(DANGEROUS)": " <b style=\"color: #e68b8b\">(DANGEROUS)<b>"
   }
 }

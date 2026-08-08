@@ -1,4 +1,4 @@
-window.onload = () => {
+window.onload = async () => {
   const inputTypes = {};
   inputTypes[window.ConfigTypes.Boolean] = "checkbox";
   inputTypes[window.ConfigTypes.Number] = "number";
@@ -79,10 +79,75 @@ window.onload = () => {
     }
   }
 
+  const formatText = (text = "", ...data) => {
+    let result = "";
+    let index = -1;
+    let token = "";
+
+    let escaped = false;
+    let signaled = false;
+
+    while (true) {
+      index++;
+      if (index >= text.length) break;
+
+      let char = text.charAt(index);
+
+      if (escaped) {
+        result += char;
+        continue;
+      }
+
+      if (signaled) {
+        if ("0123456789".includes(char)) {
+          token += char;
+          continue;
+        }
+
+        result += data[Number(token) - 1] ?? "";
+        result += char;
+
+        token = "";
+        signaled = false;
+
+        continue;
+      }
+
+      switch (char) {
+        case "\\":
+          escaped = true;
+          break;
+        case "%":
+          signaled = true;
+          token = "";
+          break;
+        default:
+          result += char;
+          break;
+      }
+    }
+
+    if (signaled || token.length > 0) {
+      result += data[Number(token) - 1] ?? "";
+    }
+
+    return result;
+  }
+
   window.Samples.forEach((sample, index) => {
+    let oby = sample.originallyBy ?? [];
+    let mby = sample.modifiedBy ?? [];
+
     let option = document.createElement("option");
     option.value = index.toString();
-    option.innerText = sample.name;
+    option.setAttribute(
+      "data-i18n",
+      `Sample name (${oby.length}+${mby.length})`
+    );
+
+    option.setAttribute("data-i18n-fmt", JSON.stringify([
+      sample.name, oby[0], oby[1], oby[2], mby[0], mby[1], mby[2]
+    ]));
 
     samples.append(option);
   });
@@ -161,6 +226,15 @@ window.onload = () => {
   function updateText() {
     document.querySelectorAll("[data-i18n]").forEach(element => {
       let translation = Translation.translate(element.getAttribute("data-i18n"));
+      let format = element.getAttribute("data-i18n-fmt") ?? "[]";
+
+      try {
+        format = JSON.parse(format);
+      } catch {
+        format = [];
+      }
+
+      if (format.length) translation = formatText(translation, ...format);
 
       switch (element.tagName) {
         case "TEXTAREA":

@@ -191,10 +191,10 @@ window.Rollover = class {
 
       if (codepoint >= this.maxValue) return;
 
-      if (stack[pointer] > codepoint && stack.length < this.cells.length) {
+      if (stack[pointer] > codepoint && stack.length < this.cellAmount) {
         while (true) {
           pointer++;
-          pointer %= this.cells.length;
+          pointer %= this.cellAmount;
           result.push(this.configuration.commands.typeset.n);
           if (pointer >= stack.length) break;
         }

@@ -4,9 +4,8 @@ window.i18n = class {
     this.localStorageKey = localStorageKey;
     this.locale = null;
     this.i18n = null;
-
     this.listeners = [];
-    this.changeLocale(localStorage.getItem(localStorageKey) ?? "en-US");
+    this.changeLocale(localStorage.getItem(this.localStorageKey) ?? "en-US");
   }
 
   // Locale

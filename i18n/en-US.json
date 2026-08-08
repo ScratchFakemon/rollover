@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "languageName": "English",
+    "languageNativeName": "English",
+    "locationName": "United States",
+    "locationNativeName": "United States",
+    "localeName": "English (United States)",
+    "localeNameNative": "English (United States)"
+  },
+  "strings": {
+    "Rollover": "Rollover",
+    "What is Rollover?": "What is Rollover?",
+    "Rollover is an esolang created by Scratch_Fakemon.": "Rollover is an esolang created by <a href=\"https://scratchfakemon.github.io/\">Scratch_Fakemon</a>. ",
+    "It uses an array of cells, of which there can only be 256 (0-255).": "It uses an array of cells, of which there can only be 256 (0-255). ",
+    "A cell's value works the same way, starting at 0 and having a maximum of 255.": "A cell's value works the same way, starting at 0 and having a maximum of 255.",
+
+    "Since Rollover doesn't have any decrement commands,": "Since Rollover doesn't have any decrement commands, ",
+    "the only way to make the current cell or its value go down": "the only way to make the current cell or its value go down ",
+    "is to have it roll over (get it?) when it exceeds the maximum value.": "is to have it <i>roll over</i> (get it?) when it exceeds the maximum value.",
+
+    "Rollover's commands": "Rollover's commands",
+    "Rollover has (number) commands in total:": "Rollover has 7 commands in total:",
+    "n - moves to the next cell": "n - moves to the next cell",
+    "i - increments the current cell's value": "i - increments the current cell's value",
+    "c[] - loops the code inside the brackets": "c[] - loops the code inside the brackets ",
+    "until the value of the cell equals the cell's index": "until the value of the cell equals the cell's index",
+    "p - prints the current cell's value as a number": "p - prints the current cell's value as a number",
+    "a - prints the current cell's value as an ASCII character": "a - prints the current cell's value as an ASCII character",
+    "u - prints the current cell's value as a UTF-8 character": "u - prints the current cell's value as a UTF-8 character",
+    "g - gets a numerical input from the user and places it in the current cell": "g - gets a numerical input from the user and places it in the current cell",
+
+    "Try it out!": "Try it out!",
+    "Use a sample": "Use a sample",
+    "Put your Rollover code here...": "Put your Rollover code here...",
+    "Run": "Run",
+    "Final state:": "Final state:",
+
+    "Configuration": "Configuration",
+    "Other": "Other",
+    "Select language": "Select language",
+    "Convert text to Rollover": "Convert text to Rollover",
+    "Convert": "Convert",
+
+    "Rollover also has a page on esolangs.org!": "Rollover also has a <a href=\"https://esolangs.org/wiki/Rollover\">page on esolangs.org!</a>",
+    "Rollover originally by Scratch_Fakemon": "<i>Rollover originally by <a href=\"https://scratchfakemon.github.io/\">Scratch_Fakemon</a></i>",
+    "Modified by Pigeon": "<i>Modified by <a href=\"https://pid-j.github.io\">Pigeon</a></i>"
+  },
+  "configuration": {
+    "(DANGEROUS)": " <b style=\"color: #ff0000\">(DANGEROUS)<b>"
+  }
+}

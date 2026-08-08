@@ -1,102 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Rollover Esolang</title>
-    <style>
-      body,
-      label {
-        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-          sans-serif;
-        color: white;
-        background-color: #864848;
-      }
-      textarea,
-      button,
-      select {
-        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-          sans-serif;
-        padding: 10px;
-        border-radius: 100px;
-        border: none;
-        background-color: #e68b8b;
-        color: white;
-        margin-top: 5px;
-      }
-      textarea {
-        border-radius: 25px;
-        width: 510px;
-        height: 290px;
-      }
-      a {
-        color: #e68b8b;
-        font-weight: bold;
-        text-decoration: none;
-      }
-      button,
-      a,
-      select {
-        transition: all 1s ease-in-out;
-      }
-      button:hover,
-      select:hover {
-        background-color: #eda8a8;
-      }
-      a:hover {
-        color: #eda8a8;
-        text-decoration: underline;
-      }
-    </style>
-    <link rel="icon" type="image/x-icon" href="favicon.svg" />
-  </head>
-  <body>
-    <h1>Rollover</h1>
-    <br />
-    <h3>What is Rollover?</h3>
-    Rollover is an esolang created by
-    <a href="https://scratchfakemon.github.io">Scratch_Fakemon</a>. It uses an
-    array of cells, of which there can only be 256 (0-255). A cell's value works
-    the same way, starting at 0 and having a maximum of 255. <br />Since
-    Rollover doesn't have any decrement commands, the only way to make the
-    current cell or its value go down is to have it <i>roll over</i> (get it?)
-    when it exceeds the maximum value.
-    <br />
-    <h3>Rollover's commands</h3>
-    Rollover has 6 commands in total:
-    <ul>
-      <li>n - moves to the next cell</li>
-      <li>i - increments the current cell's value</li>
-      <li>
-        c[] - loops the code inside the brackets until the value of the cell
-        equals the cell's index
-      </li>
-      <li>p - prints the current cell's value as a number</li>
-      <li>a - prints the current cell's value as an ASCII character</li>
-      <li>u - prints the current cell's value as a UTF-8 character</li>
-      <li>g - gets a numerical input from the user and places it in the current cell</li>
-    </ul>
-    <br />
-    <h3>Try it out!</h3>
-    <div id="tryitout">
-      <label for="samples">Use a sample</label>
-      <select id="samples" onchange="updateinput()">
-        <option value="0">None</option>
-        <option value="1">Hello world!</option>
-        <option value="2">Winky Guy</option>
-        <option value="3">Isn't Rollover just so epic?</option>
-        <option value="4">Aviation</option>
-        <option value="5">Odd or Even - by Ponydork, modified by Scratch_Fakemon</option>
-        <option value="6">Beer on the Wall - by Ponydork</option>
-        <option value="7">ASCII Printer</option>
-      </select>
-      <br />
-      <textarea placeholder="Put your Rollover code here..." id="rolloverinput"></textarea>
-      <button onclick="runfromweb()">Run</button>
-      <p id="notices"></p>
-    </div>
-    <hr />
-    Rollover also has a
-    <a href="https://esolangs.org/wiki/Rollover">page on esolangs.org</a>!
+    <head>
+        <meta charset="UTF-8">
+        <title>Rollover Esolang</title>
 
-    <script src="rollover.js"></script>
-  </body>
+        <script src="rollover/rollover.js"></script>
+        <script src="rollover/samples.js"></script>
+        <script src="rollover/config.js"></script>
+        <script src="i18n/i18n.js"></script>
+
+        <link rel="icon" type="image/x-icon" href="favicon.svg" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1 data-i18n="Rollover"></h1>
+        <h2 data-i18n="What is Rollover?"></h2>
+        <span data-i18n="Rollover is an esolang created by Scratch_Fakemon."></span>
+        <span data-i18n="It uses an array of cells, of which there can only be 256 (0-255)."></span>
+        <span data-i18n="A cell's value works the same way, starting at 0 and having a maximum of 255."></span>
+        <br/>
+        <span data-i18n="Since Rollover doesn't have any decrement commands,"></span>
+        <span data-i18n="the only way to make the current cell or its value go down"></span>
+        <span data-i18n="is to have it roll over (get it?) when it exceeds the maximum value."></span>
+
+        <h2 data-i18n="Rollover's commands"></h2>
+        <span data-i18n="Rollover has (number) commands in total:"></span>
+        <ul>
+            <li data-i18n="n - moves to the next cell"></li>
+            <li data-i18n="i - increments the current cell's value"></li>
+            <li>
+                <span data-i18n="c[] - loops the code inside the brackets"></span>
+                <span data-i18n="until the value of the cell equals the cell's index"></span>
+            </li>
+            <li data-i18n="p - prints the current cell's value as a number"></li>
+            <li data-i18n="a - prints the current cell's value as an ASCII character"></li>
+            <li data-i18n="u - prints the current cell's value as a UTF-8 character"></li>
+            <li data-i18n="g - gets a numerical input from the user and places it in the current cell"></li>
+        </ul>
+
+        <h2 data-i18n="Try it out!"></h2>
+
+        <div id="tryItOut">
+            <label for="samples" data-i18n="Use a sample"></label>
+            <select id="samples" onchange="updateInput()"></select>
+            <br />
+
+            <textarea data-i18n="Put your Rollover code here..." id="inputArea"></textarea>
+            <br/>
+
+            <button id="runRollover" data-i18n="Run" onclick="runFromInput()"></button>
+            <p id="notices"></p>
+        </div>
+
+        <h3 data-i18n="Configuration"></h3>
+
+        <div id="configurationOptions"></div>
+
+        <h3 data-i18n="Other"></h3>
+
+        <label for="languageSelector" data-i18n="Select language"></label>
+        <select id="languageSelector"></select>
+        <br/>
+        <br/>
+
+        <label for="stringToRollover" data-i18n="Convert text to Rollover"></label>
+        <input id="stringToRollover"></input>
+        <button data-i18n="Convert" onclick="stringToRollover()"></button>
+        <br/>
+        <br/>
+
+        <span id="stringToRolloverResult"></span>
+        <br/>
+
+        <hr />
+
+        <div id="footer">
+            <span data-i18n="Rollover also has a page on esolangs.org!"></span>
+            <br />
+
+            <small data-i18n="Rollover originally by Scratch_Fakemon"></small>
+            <br />
+
+            <small data-i18n="Modified by Pigeon"></small>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>

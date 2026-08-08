@@ -68,6 +68,6 @@
     "Rollover is under the GNU GPLv3.": "Rollover is under the GNU GPLv3."
   },
   "configuration": {
-    "(DANGEROUS)": " <b style=\"color: var(--theme-lighter)\">(DANGEROUS)<b>"
+    "(DANGEROUS)": " <b style=\"color: var(--theme-light)\">(DANGEROUS)<b>"
   }
 }

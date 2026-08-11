@@ -1,0 +1,115 @@
+body, html {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+
+  --theme-dark: #864848;
+  --theme-light: #e68b8b;
+  --theme-lighter: #eda8a8;
+  --theme-white: #ffffff;
+  --theme-black: #000000;
+
+  /*
+  --theme-dark: #001194;
+  --theme-light: #0036c6;
+  --theme-lighter: #0064e8;
+  --theme-white: #ffffff;
+  --theme-black: #000000;
+  */
+}
+
+body,
+label {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  color: var(--theme-white);
+  background-color: var(--theme-dark);
+}
+
+textarea,
+button,
+select {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  padding: 0.5%;
+  margin: 0.25%;
+  border: none;
+  color: var(--theme-white);
+  background-color: var(--theme-light);
+}
+
+#inputArea {
+  width: 40%;
+  height: 30vh;
+  resize: none;
+}
+
+#runRollover, #toggleOutput {
+  width: 41%;
+  text-align: center;
+  padding: 0.5%;
+}
+
+#notices {
+  word-wrap: break-word;
+}
+
+#notices[hidden] {
+  display: none;
+}
+
+a {
+  color: var(--theme-light);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+button,
+a,
+select {
+  transition: all 0.5s ease-in-out;
+}
+
+button:hover,
+select:hover {
+  background-color: var(--theme-lighter);
+}
+
+a:hover {
+  color: var(--theme-lighter);
+  text-decoration: underline;
+}
+
+input {
+  padding: 0.5%;
+  color: var(--theme-black);
+  background-color: var(--theme-white);
+  border: none;
+}
+
+#configurationOptions input {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  resize: horizontal;
+}
+
+#stringToRolloverResult {
+  display: inline-block;
+  width: 99%;
+  word-wrap: break-word;
+}
+
+input[invalid] {
+  border-color: var(--theme-lighter);
+  border-width: 4%;
+  border-style: solid;
+}
+
+hr {
+  background: var(--theme-white);
+}
+
+.footer {
+  display: inline-block;
+  margin-bottom: 1%;
+}

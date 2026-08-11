@@ -4,6 +4,11 @@ window.onload = async () => {
   inputTypes[window.ConfigTypes.Number] = "number";
   inputTypes[window.ConfigTypes.Color] = "color";
 
+  const JSONlikeInputTypes = [
+    window.ConfigTypes.Array,
+    window.ConfigTypes.Object
+  ]
+
   const Interpreter = new window.Rollover();
   const Translation = new window.i18n(`${location.host}/i18n-locale`);
 
@@ -33,6 +38,17 @@ window.onload = async () => {
       default:
         return value;
     }
+  }
+
+  const onOff = value => {
+    return value ? "on" : "off";
+  }
+
+  const flipInput = value => {
+    let valueYesNo = yesNo(value);
+    if (!typeof (valueYesNo) == "boolean") return;
+
+    return onOff(!valueYesNo);
   }
 
   const parsable = (value, type) => {
@@ -167,26 +183,46 @@ window.onload = async () => {
     }
 
     let sp = option.path.split(".");
+    let inputType = inputTypes[option.type] || "string";
 
     let input = document.createElement("input");
     input.setAttribute("id", `configuration-option-${index}`);
-    input.setAttribute("type", inputTypes[option.type] || "string");
-    input.oninput = () => {
-      if (parsable(input.value, option.type)) {
-        Interpreter.configuration[sp[0]][sp[1]] = parseInput(input.value, option.type);
-        input.removeAttribute("invalid");
-        input.removeAttribute("title");
-      } else {
-        input.setAttribute("invalid", "");
-        input.setAttribute("title", Translation.translate("Invalid input!"));
-      }
-    }
+    input.setAttribute("type", inputType);
 
     input.style.marginLeft = "0.5%";
-    if ([window.ConfigTypes.Array, window.ConfigTypes.Object].includes(option.type))
-      input.style.width = "40%";
-    input.value = option.type == window.ConfigTypes.Boolean ?
-      `o${(option.default || false) ? 'ff' : 'n'}` : option.default || "";
+    if (JSONlikeInputTypes.includes(option.type)) input.style.width = "40%";
+    if (option.type == window.ConfigTypes.Boolean) input.value = onOff(yesNo(option.default || false));
+    else input.value = option.default || "";
+
+    // checkbox input requires some extra shenaniganery
+    switch (inputType) {
+      case "checkbox":
+        input.oninput = () => {
+          input.value = flipInput(input.value);
+
+          if (parsable(input.value, option.type)) {
+            Interpreter.configuration[sp[0]][sp[1]] = parseInput(input.value, option.type);
+            input.removeAttribute("invalid");
+            input.removeAttribute("title");
+          } else {
+            input.setAttribute("invalid", "");
+            input.setAttribute("title", Translation.translate("Invalid input!"));
+          }
+        }
+        break;
+      default:
+        input.oninput = () => {
+          if (parsable(input.value, option.type)) {
+            Interpreter.configuration[sp[0]][sp[1]] = parseInput(input.value, option.type);
+            input.removeAttribute("invalid");
+            input.removeAttribute("title");
+          } else {
+            input.setAttribute("invalid", "");
+            input.setAttribute("title", Translation.translate("Invalid input!"));
+          }
+        };
+        break;
+    }
 
     let desc = document.createElement("span");
     desc.style.fontSize = "small";

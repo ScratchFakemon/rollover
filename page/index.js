@@ -226,7 +226,7 @@ window.onload = async () => {
 
     let desc = document.createElement("span");
     desc.style.fontSize = "small";
-    desc.setAttribute("data-i18n-cfg", option.description);
+    desc.setAttribute("data-i18n-cfg", (option.description || "").replaceAll("\n", "<br/>"));
 
     div.append(label);
     if (option.dangerous)

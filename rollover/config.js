@@ -17,6 +17,9 @@ window.Configuration = [
     type: ConfigTypes.Boolean,
     default: false
   },
+  /*
+    TO-DO: Add the extended features (more commands)
+  */
   {
     name: "Typeset",
     description: "Changes the command set. Usually should be kept as-is to avoid any unexpected issues.",
